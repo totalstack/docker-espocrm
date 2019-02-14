@@ -21,7 +21,7 @@ docker exec -ti container-name mysql  -uroot -p
 ### 2. Build an Image using Dockerfile
 To create an image
 ```
-docker built -t image-name:version .
+docker build -t image-name:version .
 ```
 * -t = set the image tag name and version.
 * . = the location of Dockerfile
