@@ -1,0 +1,2 @@
+* * * * * /usr/bin/php -f /var/www/cron.php 2>&1 > /dev/null
+# An empty line is required at the end of this file for a valid cron file.
