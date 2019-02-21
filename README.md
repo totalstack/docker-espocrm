@@ -27,13 +27,14 @@ docker build --build-arg ESPO_VERSION=5.5.5 -t espocrm:5.5.5 .
 
 ### 2. Create the containers using docker-compose.yml file
 Before running the yml file.
-First, create the volume paths on your local machine.
-Second, check the container names.
-Third, check the image names and tag names.
+* Create the volume paths on your local machine.
+* Check the container names.
+* Check the image names and tag names.
 
 Then apply all changes in docker-compose.yml file.
 
 To run the docker-compose.yml file.
 ```
 docker-compose -f docker-compose.yml up -d
+```
 
