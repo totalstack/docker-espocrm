@@ -1,0 +1,47 @@
+version: '3.7'
+
+services:
+ espocrm:
+  image: espocrm:5.5.6
+  container_name: espo5.5.6
+  depends_on:
+   - mysql
+  volumes:
+   - espo-data:/var/www/html
+  ports:
+   - "8181:80"
+
+ mysql:
+  image: mysql:5.7
+  container_name: my_mysql5.7
+  environment:
+   - MYSQL_ROOT_PASSWORD=123456
+   - MYSQL_DATABASE=espo
+   - MYSQL_USER=espodbadmin
+   - MYSQL_PASSWORD=123456
+  volumes:
+   - mysql-data:/var/lib/mysql:rw,delegated
+  ports:
+   - "3306:3306"
+
+ phpmyadmin:
+  image: phpmyadmin/phpmyadmin
+  container_name: my_phpmyadmin
+  links:
+   - mysql:db
+  ports:
+   - "8080:80"
+
+volumes:
+ espo-data:
+  driver: local
+  driver_opts:
+   type: none
+   o: bind
+   device: /home/user/projects/audioslug/espo-data
+ mysql-data:
+  driver: local
+  driver_opts:
+   type: none
+   o: bind
+   device: /home/user/projects/audioslug/mysql-data
