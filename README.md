@@ -23,6 +23,7 @@ docker build -t image-name:version .
 For another ESPOCRM Version
 ```
 docker build --build-arg ESPO_VERSION=5.5.5 -t espocrm:5.5.5 .
+```
 
 ### 2. Create the containers using docker-compose.yml file
 Before running the yml file.
