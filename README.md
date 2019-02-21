@@ -1,24 +1,18 @@
 # docker-espocrm
-This Dockerfile will create an image with Ubuntu 16.04, Apache, PHP 7.0 and EspoCRM
+Dockerfile will create an image with Ubuntu 16.04, Apache, PHP 7.0 and EspoCRM. 
+With Docker Compose yml file it can create 2 volumes and launch 3 containers.
 
-## Procedure
-### 1. Create MySQL Container
-To create a mysql container
-```
-docker run -p 3306:3306 --name=container-name -e MYSQL_ROOT_PASSWORD=password -d mysql:5.7
-```
+Volumes are:
+1. espo-data
+2. mysql-data
 
-* -p = publish the port "docker-host-port:container-port"
-* --name = to assign container name
-* -d = run container in background and print container ID
+Containers are;
+1. Ubuntu 16.04, Apache, PHP 7.0 and EspoCRM.
+2. PHPmyAdmin
+3. MySQL 5.7
 
-To access MySQL CLI
-```
-docker exec -ti container-name mysql  -uroot -p
-```
-* MySQL container should be running
-
-### 2. Build an Image using Dockerfile
+## Procedures
+### 1. Build an Image using Dockerfile
 To create an image
 ```
 docker build -t image-name:version .
@@ -26,23 +20,19 @@ docker build -t image-name:version .
 * -t = set the image tag name and version.
 * . = the location of Dockerfile
 
-### 3. Create a container with the image
-To create a container and link mysql container to it
+For another ESPOCRM Version
 ```
-docker run -p 80:80 --name=container-name -d --link mysql-container:db dockerfile-image-name:version
-```
+docker build --build-arg ESPO_VERSION=5.5.5 -t espocrm:5.5.5 .
 
-To access the container interactive mode
-```
-docker exec -ti container-name /bin/bash
-```
+### 2. Create the containers using docker-compose.yml file
+Before running the yml file.
+First, create the volume paths on your local machine.
+Second, check the container names.
+Third, check the image names and tag names.
 
-To run the container
-```
-docker start container-name
-```
+Then apply all changes in docker-compose.yml file.
 
-To stop the container
+To run the docker-compose.yml file.
 ```
-docker stop container-name
-```
+docker-compose -f docker-compose.yml up -d
+
