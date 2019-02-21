@@ -30,6 +30,7 @@ Before running the yml file.
 * Create the volume paths on your local machine.
 * Check the container names.
 * Check the image names and tag names.
+* Check database name, user and password and container ports.
 
 Then apply all changes in docker-compose.yml file.
 
